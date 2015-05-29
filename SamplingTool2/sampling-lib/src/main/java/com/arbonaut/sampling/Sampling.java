@@ -201,26 +201,23 @@ public final class Sampling {
         // Have stratum columns so generate distinct sample for each stratum
         else
         {
-            Set<String> strata = findUniqueStrata(features.getFeatures(), stratumColumn);
-            for (String stratum : strata)
-            {
-                Integer size = sampleSize.get(stratum);
-                if (size == null)
-                    throw new Exception("No size given for stratum " + stratum);    
-            
-                // Get features that belong to this stratum from the feature 
-                // collection 
-                
-                Filter filter = CQL.toFilter(
-                    String.format("%s='%s'", stratumColumn, stratum));
-                      
-                generateSampleForStratum(
-                    features.getFeatures(filter), 
-                    size, stratum, forceUTM, sampler, writer);   
-            }
+        	//former code version produces an error if not all unique strata are contained in the Map
+        	// (if only some strata shall be used for sampling).
+        	// --> use the Map directly instead of iterating over unique strata
+        	Set<String> strata = sampleSize.keySet();
+        	for (String stratum : strata)
+        	{
+        		Integer size = sampleSize.get(stratum);
+        		Filter filter = CQL.toFilter( // returns query statement like VEGZONE = Dry semideciduous (fire zone)
+        				String.format("%s='%s'", stratumColumn, stratum));
+
+        		// Get features that belong to this stratum from the feature 
+        		// collection 
+        		generateSampleForStratum(
+        				features.getFeatures(filter), // MultiFeature Strata problem is solved here using filter
+        				size, stratum, forceUTM, sampler, writer);   
+        	}
         }    
-    
-    
     }
   
   

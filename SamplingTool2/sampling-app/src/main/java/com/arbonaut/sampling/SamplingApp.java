@@ -2,6 +2,9 @@
 package com.arbonaut.sampling;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.arbonaut.sampling.Sampling;
 import com.arbonaut.sampling.design.SamplingDesign;
 import com.arbonaut.sampling.design.SimpleRandomSample;
@@ -15,6 +18,7 @@ import com.arbonaut.sampling.io.CsvSampleWriter;
 import com.arbonaut.sampling.io.FilteredSampleWriter;
 import com.arbonaut.sampling.io.filter.CenterpointSampleFilter;
 import com.arbonaut.sampling.io.filter.ReprojectingSampleFilter;
+
 import org.geotools.referencing.crs.DefaultGeographicCRS;
 
 
@@ -29,7 +33,7 @@ public class SamplingApp {
         {        
             // Which plot geometry do we want? Uncomment one option
             //PlotGeometry plotGeom = new PointPlot();
-            PlotGeometry plotGeom = new CircularPlot(9);
+            PlotGeometry plotGeom = new CircularPlot(12000);
             
             // What kind of clustering? Uncomment one option
             PlotCluster cluster = null; // No clustering
@@ -40,7 +44,7 @@ public class SamplingApp {
     
             // We'll write to CSV file        
             SampleWriter csvWriter = new CsvSampleWriter(
-                new File("c:\\temp\\sample1.csv"),
+                new File("c:\\temp\\Abstandstest_stratified.csv"),
                 design, 
                 false            // If true, writes X,Y columns (requires point geometry)
                 );        
@@ -55,16 +59,20 @@ public class SamplingApp {
             //writer.addFilter(new ReprojectingSampleFilter(DefaultGeographicCRS.WGS84));    
                             
             // Uncomment this to convert the sample geometry to points
-            writer.addFilter(new CenterpointSampleFilter());    
+            writer.addFilter(new CenterpointSampleFilter()); // holt aus den Kreisen hinterher die Punkte wieder raus   
 
             try
             {
                 // Now we could just call design.generate(...) but we'll use the handy
                 // methods in Sampling class which do some of the boring work for us  
-                
+            	
+            	Map<String, Integer> N = new HashMap<String, Integer>();
+                N.put("Savannah", 100);
+                N.put("Dry semideciduous (fire zone)", 300);
                 Sampling.generateSample(
-                    new File("c:\\temp\\samplingCensus2.shp"),
-                    100,
+                    new File("c:\\temp\\zones_poly_UTM.shp"),
+                    "VEGZONE",
+                    N,
                     false,   // Force UTM? 
                     design, writer);
             }
