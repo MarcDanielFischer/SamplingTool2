@@ -107,11 +107,12 @@ public class SimpleRandomSample extends SamplingDesignBase {
                         c2, censusCRS, clusterPlotNr, clusterNr, stratumName, 
                         writer, plotChecker);
                          
-                    if (added) { ++numPlots; ++clusterPlotNr; }                    
+                    if (added) {++clusterPlotNr;}                    
                 }
                 
-                // Placed at least 1 plot in te cluster -> increase cluster number
-                if (clusterPlotNr > 0) ++clusterNr;
+                // Placed at least 1 plot in the cluster -> increase cluster number
+                // increase numPlots here because one cluster counts as one single plot
+                if (clusterPlotNr > 0) {++clusterNr; ++numPlots;}
             }
             // Single plot
             else
