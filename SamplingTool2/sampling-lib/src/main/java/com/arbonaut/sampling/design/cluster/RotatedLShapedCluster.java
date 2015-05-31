@@ -7,9 +7,9 @@ import com.vividsolutions.jts.geom.impl.CoordinateArraySequence;
 
 
 /**
- * L-shaped plot cluster.
+ * Rotated ("upside down") L-shaped plot cluster.
  */
-public class LShapedCluster implements PlotCluster {
+public class RotatedLShapedCluster implements PlotCluster {
     
     private double plotDistance;
     private int numPlots;  
@@ -20,7 +20,7 @@ public class LShapedCluster implements PlotCluster {
      * @param plotDistance  Distance between sub-plots   
      * @param numPlots   Number of plots in the cluster     
      */              
-    public LShapedCluster(double plotDistance, int numPlots)
+    public RotatedLShapedCluster(double plotDistance, int numPlots)
     {
         this.plotDistance = plotDistance;
         this.numPlots = numPlots;
@@ -55,7 +55,8 @@ public class LShapedCluster implements PlotCluster {
     	// vertical axis
 		for(int i = 0; i <= numPlotsVertical; i++){
 			coords[n] = new Coordinate(x, y);	
-			y += this.plotDistance; // as we build along the vertical axis, only y coords are affected
+			// the only difference to regular LShapedClusters is that these use decreasing y values
+			y -= this.plotDistance; // as we build along the vertical axis, only y coords are affected
 			n++;
 				
 		}
