@@ -82,7 +82,6 @@ public class SimpleRandomSample extends SamplingDesignBase {
         Coordinate c2 = new Coordinate();
         
         int numPlots = 0;
-        int clusterNr = 0;
         int attemptsRemaining = this.maxNumAttempts * sampleSize;
         
         while (numPlots < sampleSize && attemptsRemaining > 0)
@@ -99,20 +98,20 @@ public class SimpleRandomSample extends SamplingDesignBase {
             if (cluster != null)
             {
                 CoordinateSequence subplots = cluster.create(c);
-                int clusterPlotNr = 0;
+                int subPlotNr = 0;
                 for (int i = 0; i != subplots.size(); i++)
                 {
                     subplots.getCoordinate(i, c2);
                     boolean added = sampleSinglePoint(
-                        c2, censusCRS, clusterPlotNr, clusterNr, stratumName, 
+                        c2, censusCRS, subPlotNr, numPlots, stratumName, 
                         writer, plotChecker);
                          
-                    if (added) {++clusterPlotNr;}                    
+                    if (added) {++subPlotNr;}                    
                 }
                 
                 // Placed at least 1 plot in the cluster -> increase cluster number
                 // increase numPlots here because one cluster counts as one single plot
-                if (clusterPlotNr > 0) {++clusterNr; ++numPlots;}
+                if (subPlotNr > 0) {++numPlots;}
             }
             // Single plot
             else
