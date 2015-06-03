@@ -65,6 +65,34 @@ public class SamplePlot {
 		this(geom, crs, stratumName, plotNr);
 		this.clusterNr = clusterNr;
 	}
+	
+	/**
+	 * Constructs a SamplePlot object with plotNr and clusterNr
+	 * @param point
+	 * @param stratumName
+	 * @param CRS
+	 * @param plotNr
+	 * @param clusterNr
+	 */
+	public SamplePlot(Geometry geom, CoordinateReferenceSystem crs, 
+			String stratumName, int plotNr, int clusterNr, double weight) {
+		this(geom, crs, stratumName, plotNr, clusterNr);
+		this.weight = weight;
+	}
+	
+	/**
+	 * Constructs a SamplePlot object with plotNr and clusterNr
+	 * @param point
+	 * @param stratumName
+	 * @param CRS
+	 * @param plotNr
+	 * @param clusterNr
+	 */
+	public SamplePlot(Geometry geom, CoordinateReferenceSystem crs, 
+			String stratumName, int plotNr, double weight) {
+		this(geom, crs, stratumName, plotNr);
+		this.weight = weight;
+	}
     
     
     /**

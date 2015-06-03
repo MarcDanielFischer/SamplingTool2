@@ -19,7 +19,7 @@ public class GridShapedCluster implements PlotCluster {
     
     /**
      * GridShapedCluster constructor.
-     * The first sub-plot is in the upper left (=north-western)corner.
+     * The first sub-plot is in the upper left (=north-western) corner.
      * @param xDistance  Distance between sub-plots along the x axis     
      * @param yDistance  Distance between sub-plots along the y axis  
      * @param numPlotsX   Number of sub-plots along the x axis   
@@ -65,18 +65,8 @@ public class GridShapedCluster implements PlotCluster {
 			y = centre.y;
 			x+= this.xDistance;
 		}
-		
-		
-//        for (int n = 0; n != this.numPlots; n++)
-//        {
-//            coords[n] = new Coordinate(x, y);
-//            y+= this.yDistance;
-//        }
-		
-		
         
         return new CoordinateArraySequence(coords);
-    
     }
   
 }

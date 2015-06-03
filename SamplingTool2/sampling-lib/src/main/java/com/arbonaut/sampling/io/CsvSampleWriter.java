@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import com.arbonaut.sampling.SamplePlot;
 import com.arbonaut.sampling.design.SamplingDesign;
-
+import com.arbonaut.sampling.design.WeightedRandomSample;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Coordinate;
@@ -68,6 +68,10 @@ public class CsvSampleWriter implements SampleWriter {
         if (design.getPlotClustering() != null) {
             fileWriter.write(separator); fileWriter.write("Cluster_nr");
         } 
+        
+        if (design instanceof WeightedRandomSample) {
+            fileWriter.write(separator); fileWriter.write("weight");
+        } 
 
         fileWriter.write(separator); fileWriter.write("Stratum");
         fileWriter.write("\n");
@@ -110,6 +114,12 @@ public class CsvSampleWriter implements SampleWriter {
             fileWriter.write(separator);
             fileWriter.write(Double.toString(plot.getClusterNr()));
         }
+        
+        // weight value
+        if (design instanceof WeightedRandomSample) {
+            fileWriter.write(separator); 
+            fileWriter.write(Double.toString(plot.getWeight()));
+        } 
         
         // Stratum
         fileWriter.write(separator);
