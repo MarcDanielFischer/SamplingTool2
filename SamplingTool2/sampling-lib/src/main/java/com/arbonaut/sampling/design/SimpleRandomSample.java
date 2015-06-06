@@ -78,8 +78,7 @@ public class SimpleRandomSample extends SamplingDesignBase {
         PlotInPolygonChecker plotChecker = new PlotInPolygonChecker(
             (Polygonal)censusGeometry, this.getPlotGeometry());
             
-        Coordinate c = new Coordinate();   
-        Coordinate c2 = new Coordinate();
+        
         
         int numPlots = 0;
         int attemptsRemaining = this.maxNumAttempts * sampleSize;
@@ -87,6 +86,11 @@ public class SimpleRandomSample extends SamplingDesignBase {
         while (numPlots < sampleSize && attemptsRemaining > 0)
         {
             --attemptsRemaining;
+            // Coordinates have to be defined inside while loop, otherwise
+            // ShpSampleWriter will use the same Coordinate(specifying the same position)
+            // for all features
+            Coordinate c = new Coordinate();   
+            Coordinate c2 = new Coordinate();
             
             // generate random X
 			c.x = (Math.random() * (maxX - minX)) + minX;

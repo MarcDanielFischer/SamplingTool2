@@ -1,20 +1,17 @@
 
 package com.arbonaut.sampling.io;
 
-import java.io.IOException;
 import java.io.File;
 import java.io.FileWriter;
-import java.util.Collection;
-import java.util.ArrayList;
+import java.io.IOException;
 
 import com.arbonaut.sampling.SamplePlot;
 import com.arbonaut.sampling.design.SamplingDesign;
 import com.arbonaut.sampling.design.WeightedRandomSample;
+import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Point;
-import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.Envelope;
-import com.vividsolutions.jts.io.WKTWriter; 
+import com.vividsolutions.jts.io.WKTWriter;
 
 
 /**
