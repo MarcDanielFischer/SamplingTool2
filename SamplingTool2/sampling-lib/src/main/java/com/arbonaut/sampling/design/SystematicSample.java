@@ -73,7 +73,7 @@ public class SystematicSample extends SamplingDesignBase {
   				(Polygonal)censusGeometry, this.getPlotGeometry());
     	Coordinate[] coords = createGridCoords(censusGeometry, plotChecker);
         PlotCluster cluster = this.getPlotClustering();
-        Coordinate c = new Coordinate();
+        
         
         // iterate over coords[], optionally create clusters and sample plots
         int numPlots = 0;
@@ -86,7 +86,8 @@ public class SystematicSample extends SamplingDesignBase {
                 int subPlotNr = 0;
                 for (int k = 0; k != subplots.size(); k++)
                 {
-                    subplots.getCoordinate(k, c);
+                	Coordinate c = new Coordinate();
+                	subplots.getCoordinate(k, c);
                     boolean added = sampleSinglePoint(
                         c, censusCRS, subPlotNr, numPlots, stratumName, 
                         writer, plotChecker);

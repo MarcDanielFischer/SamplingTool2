@@ -90,7 +90,6 @@ public class SimpleRandomSample extends SamplingDesignBase {
             // ShpSampleWriter will use the same Coordinate(specifying the same position)
             // for all features
             Coordinate c = new Coordinate();   
-            Coordinate c2 = new Coordinate();
             
             // generate random X
 			c.x = (Math.random() * (maxX - minX)) + minX;
@@ -105,7 +104,8 @@ public class SimpleRandomSample extends SamplingDesignBase {
                 int subPlotNr = 0;
                 for (int i = 0; i != subplots.size(); i++)
                 {
-                    subplots.getCoordinate(i, c2);
+                	Coordinate c2 = new Coordinate();
+                	subplots.getCoordinate(i, c2);
                     boolean added = sampleSinglePoint(
                         c2, censusCRS, subPlotNr, numPlots, stratumName, 
                         writer, plotChecker);

@@ -93,17 +93,14 @@ public class WeightedRandomSample extends SamplingDesignBase {
     	
     	// variables used in loop
         PlotCluster cluster = this.getPlotClustering();
-        Coordinate c = new Coordinate();   
-        Coordinate c2 = new Coordinate();
         PlotInPolygonChecker plotChecker = new PlotInPolygonChecker(
 	            (Polygonal)censusGeometry, this.getPlotGeometry());
         
         ////////////////////////////////////////////////////////////////////////
         int numPlots = 0;
     	while (numPlots < sampleSize){
-    		
     		 // get random point in geom
-    		 c = createRandCoordInGeom(censusGeometry);
+    		Coordinate c = createRandCoordInGeom(censusGeometry);
     		 
     		// get raster value at coord position 
     		double plotValue = RasterProcessing.getValueAtPosition(this.raster, c, censusCRS, (double[]) null)[0];
@@ -129,6 +126,7 @@ public class WeightedRandomSample extends SamplingDesignBase {
     				int subPlotNr = 0;
     				for (int i = 0; i != subplots.size(); i++)
     				{
+    					Coordinate c2 = new Coordinate();
     					subplots.getCoordinate(i, c2);
     					
     					// check if sub-plot is still inside census Geometry
@@ -149,7 +147,7 @@ public class WeightedRandomSample extends SamplingDesignBase {
     			// Single plot
     			else
     			{
-    				Geometry plotGeom = this.getPlotGeometry().create(c2);
+    				Geometry plotGeom = this.getPlotGeometry().create(c);
 			    	SamplePlot plot = 
 			    			new SamplePlot(plotGeom, censusCRS, stratumName, numPlots, weight);  
 			    	writer.write(plot);
