@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.1.8" icons="true" automaticImage="PNG">  
+  <object id="1" language="java" name="com.arbonaut.sampling.SamplingApp" project="sampling-app" 
+    file="/sampling-app/src/main/java/com/arbonaut/sampling/SamplingApp.java" binary="false" label="&lt;static&gt;" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="2">      
+      <position height="387" width="0" x="0" y="78"/>    
+    </execution>  
+  </object>  
+  <object id="5" language="java" name="com.arbonaut.sampling.Sampling" project="sampling-lib" 
+    file="/sampling-lib/src/main/java/com/arbonaut/sampling/Sampling.java" binary="false" label="&lt;static&gt;" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="4">      
+      <position height="345" width="0" x="0" y="99"/>    
+    </execution>    
+    <execution id="7">      
+      <position height="282" width="0" x="0" y="141"/>    
+    </execution>    
+    <execution id="9">      
+      <position height="209" width="0" x="0" y="193"/>    
+    </execution>  
+  </object>  
+  <object id="12" language="java" name="com.arbonaut.sampling.design.SimpleRandomSample" project="sampling-lib" 
+    file="/sampling-lib/src/main/java/com/arbonaut/sampling/design/SimpleRandomSample.java" binary="false" 
+    label="simpleRandomSample" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="11">      
+      <position height="157" width="0" x="0" y="224"/>    
+    </execution>    
+    <execution id="14">      
+      <position height="94" width="0" x="0" y="266"/>    
+    </execution>    
+    <execution id="16">      
+      <position height="21" width="0" x="0" y="318"/>    
+    </execution>  
+  </object>  
+  <message id="3" 
+    operation="generateSample(java.io.File,java.lang.String,java.util.Map&lt;java.lang.String,java.lang.Integer&gt;,boolean,com.arbonaut.sampling.design.SamplingDesign,com.arbonaut.sampling.io.SampleWriter):void">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="6" 
+    operation="generateSample(org.geotools.data.simple.SimpleFeatureSource,java.lang.String,java.util.Map&lt;java.lang.String,java.lang.Integer&gt;,boolean,com.arbonaut.sampling.design.SamplingDesign,com.arbonaut.sampling.io.SampleWriter):void">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>  
+  <message id="8" 
+    operation="generateSampleForStratum(org.geotools.data.simple.SimpleFeatureCollection,int,java.lang.String,boolean,com.arbonaut.sampling.design.SamplingDesign,com.arbonaut.sampling.io.SampleWriter):void">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="9"/>  
+  </message>  
+  <message id="10" 
+    operation="generate(com.vividsolutions.jts.geom.Geometry,org.opengis.referencing.crs.CoordinateReferenceSystem,int,java.lang.String,com.arbonaut.sampling.io.SampleWriter):void">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="11"/>  
+  </message>  
+  <message id="13" 
+    operation="doGenerate(com.vividsolutions.jts.geom.Geometry,org.opengis.referencing.crs.CoordinateReferenceSystem,int,java.lang.String,com.arbonaut.sampling.io.SampleWriter):void">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="14"/>  
+  </message>  
+  <message id="15" 
+    operation="sampleSinglePoint(com.vividsolutions.jts.geom.Coordinate,org.opengis.referencing.crs.CoordinateReferenceSystem,int,int,java.lang.String,com.arbonaut.sampling.io.SampleWriter,com.arbonaut.sampling.util.PlotInPolygonChecker):boolean">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="16"/>  
+  </message>
+</sequence-diagram>

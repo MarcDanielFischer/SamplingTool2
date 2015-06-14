@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.1.8" icons="true" automaticImage="PNG">  
+  <object id="1" language="java" name="com.arbonaut.sampling.SamplingApp" project="sampling-app" 
+    file="/sampling-app/src/main/java/com/arbonaut/sampling/SamplingApp.java" binary="false" label="&lt;static&gt;" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="2">      
+      <position height="2995" width="0" x="0" y="78"/>    
+    </execution>  
+  </object>  
+  <object id="5" language="java" name="com.arbonaut.sampling.Sampling" project="sampling-lib" 
+    file="/sampling-lib/src/main/java/com/arbonaut/sampling/Sampling.java" binary="false" label="&lt;static&gt;" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="4">      
+      <position height="2953" width="0" x="0" y="99"/>    
+    </execution>    
+    <execution id="15">      
+      <position height="2712" width="0" x="0" y="319"/>    
+    </execution>    
+    <execution id="37">      
+      <position height="2199" width="0" x="0" y="811"/>    
+    </execution>    
+    <execution id="23">      
+      <position height="21" width="0" x="0" y="497"/>    
+    </execution>    
+    <execution id="33">      
+      <position height="21" width="0" x="0" y="717"/>    
+    </execution>    
+    <execution id="13">      
+      <position height="21" width="0" x="0" y="267"/>    
+    </execution>  
+  </object>  
+  <object id="78" language="java" name="java.io.File" project="sampling-lib" 
+    file="C:/Program Files/Java/jre1.8.0_25/lib/rt.jar" binary="true" label="shapeFile" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="7">      
+      <position height="21" width="0" x="0" y="120"/>    
+    </execution>  
+  </object>  
+  <object id="79" language="java" name="org.geotools.data.FileDataStoreFinder" project="sampling-lib" 
+    file="C:/Users/daniel/.m2/repository/org/geotools/gt-main/13.0/gt-main-13.0.jar" binary="true" 
+    label="&lt;static&gt;" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="9">      
+      <position height="21" width="0" x="0" y="162"/>    
+    </execution>  
+  </object>  
+  <object id="80" language="java" name="org.geotools.data.FileDataStore" project="sampling-lib" 
+    file="C:/Users/daniel/.m2/repository/org/geotools/gt-api/13.0/gt-api-13.0.jar" binary="true" label="dataStore" 
+    type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="11">      
+      <position height="21" width="0" x="0" y="204"/>    
+    </execution>  
+  </object>  
+  <object id="81" language="java" name="java.util.Map" project="sampling-lib" 
+    file="C:/Program Files/Java/jre1.8.0_25/lib/rt.jar" binary="true" label="sampleSize" type="interface" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="17">      
+      <position height="21" width="0" x="0" y="350"/>    
+    </execution>    
+    <execution id="27">      
+      <position height="21" width="0" x="0" y="570"/>    
+    </execution>    
+    <execution id="29">      
+      <position height="21" width="0" x="0" y="612"/>    
+    </execution>  
+  </object>  
+  <object id="82" language="java" name="java.util.Collection" project="sampling-lib" 
+    file="C:/Program Files/Java/jre1.8.0_25/lib/rt.jar" binary="true" type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="19">      
+      <position height="21" width="0" x="0" y="392"/>    
+    </execution>    
+    <execution id="21">      
+      <position height="21" width="0" x="0" y="434"/>    
+    </execution>  
+  </object>  
+  <object id="83" language="java" name="org.geotools.data.simple.SimpleFeatureSource" project="sampling-lib" 
+    file="C:/Users/daniel/.m2/repository/org/geotools/gt-api/13.0/gt-api-13.0.jar" binary="true" label="features" 
+    type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="25">      
+      <position height="21" width="0" x="0" y="528"/>    
+    </execution>    
+    <execution id="35">      
+      <position height="21" width="0" x="0" y="748"/>    
+    </execution>  
+  </object>  
+  <object id="84" language="java" name="org.geotools.filter.text.cql2.CQL" project="sampling-lib" 
+    file="C:/Users/daniel/.m2/repository/org/geotools/gt-cql/13.0/gt-cql-13.0.jar" binary="true" label="&lt;static&gt;" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="31">      
+      <position height="21" width="0" x="0" y="654"/>    
+    </execution>  
+  </object>  
+  <object id="85" language="java" name="java.util.ArrayList" project="sampling-lib" 
+    file="C:/Program Files/Java/jre1.8.0_25/lib/rt.jar" binary="true" label="allGeoms" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="39">      
+      <position height="21" width="0" x="0" y="842"/>    
+    </execution>    
+    <execution id="53">      
+      <position height="21" width="0" x="0" y="1136"/>    
+    </execution>  
+  </object>  
+  <object id="86" language="java" name="org.geotools.data.simple.SimpleFeatureCollection" project="sampling-lib" 
+    file="C:/Users/daniel/.m2/repository/org/geotools/gt-api/13.0/gt-api-13.0.jar" binary="true" label="stratumFeatures" 
+    type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="41">      
+      <position height="21" width="0" x="0" y="884"/>    
+    </execution>  
+  </object>  
+  <object id="87" language="java" name="org.geotools.feature.FeatureIterator" project="sampling-lib" 
+    file="C:/Users/daniel/.m2/repository/org/geotools/gt-api/13.0/gt-api-13.0.jar" binary="true" label="iterator" 
+    type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="43">      
+      <position height="21" width="0" x="0" y="926"/>    
+    </execution>    
+    <execution id="45">      
+      <position height="21" width="0" x="0" y="968"/>    
+    </execution>    
+    <execution id="55">      
+      <position height="21" width="0" x="0" y="1178"/>    
+    </execution>  
+  </object>  
+  <object id="88" language="java" name="org.opengis.feature.simple.SimpleFeature" project="sampling-lib" 
+    file="C:/Users/daniel/.m2/repository/org/geotools/gt-opengis/13.0/gt-opengis-13.0.jar" binary="true" label="f" 
+    type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="47">      
+      <position height="21" width="0" x="0" y="1010"/>    
+    </execution>    
+    <execution id="49">      
+      <position height="21" width="0" x="0" y="1052"/>    
+    </execution>  
+  </object>  
+  <object id="89" language="java" name="org.opengis.feature.simple.SimpleFeatureType" project="sampling-lib" 
+    file="C:/Users/daniel/.m2/repository/org/geotools/gt-opengis/13.0/gt-opengis-13.0.jar" binary="true" 
+    type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="51">      
+      <position height="21" width="0" x="0" y="1094"/>    
+    </execution>  
+  </object>  
+  <object id="90" language="java" name="org.geotools.referencing.CRS" project="sampling-lib" 
+    file="C:/Users/daniel/.m2/repository/org/geotools/gt-referencing/13.0/gt-referencing-13.0.jar" binary="true" 
+    label="&lt;static&gt;" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="57">      
+      <position height="21" width="0" x="0" y="1220"/>    
+    </execution>    
+    <execution id="61">      
+      <position height="21" width="0" x="0" y="1304"/>    
+    </execution>    
+    <execution id="71">      
+      <position height="21" width="0" x="0" y="1514"/>    
+    </execution>  
+  </object>  
+  <object id="91" language="java" name="java.io.PrintStream" project="sampling-app" 
+    file="C:/Program Files/Java/jre1.8.0_25/lib/rt.jar" binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="59">      
+      <position height="21" width="0" x="0" y="1262"/>    
+    </execution>  
+  </object>  
+  <object id="92" language="java" name="org.geotools.geometry.jts.JTSFactoryFinder" project="sampling-lib" 
+    file="C:/Users/daniel/.m2/repository/org/geotools/gt-main/13.0/gt-main-13.0.jar" binary="true" 
+    label="&lt;static&gt;" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="63">      
+      <position height="21" width="0" x="0" y="1346"/>    
+    </execution>  
+  </object>  
+  <object id="93" language="java" name="com.vividsolutions.jts.geom.GeometryFactory" project="sampling-lib" 
+    file="C:/Users/daniel/.m2/repository/com/vividsolutions/jts/1.13/jts-1.13.jar" binary="true" label="gf" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="65">      
+      <position height="21" width="0" x="0" y="1388"/>    
+    </execution>  
+  </object>  
+  <object id="94" language="java" name="com.vividsolutions.jts.geom.Geometry" project="sampling-lib" 
+    file="C:/Users/daniel/.m2/repository/com/vividsolutions/jts/1.13/jts-1.13.jar" binary="true" 
+    label="geometryCollection" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="67">      
+      <position height="21" width="0" x="0" y="1430"/>    
+    </execution>  
+  </object>  
+  <object id="95" language="java" name="com.arbonaut.sampling.util.UTMFinder" project="sampling-lib" 
+    file="/sampling-lib/src/main/java/com/arbonaut/sampling/util/UTMFinder.java" binary="false" label="&lt;static&gt;" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="69">      
+      <position height="21" width="0" x="0" y="1472"/>    
+    </execution>  
+  </object>  
+  <object id="96" language="java" name="org.geotools.geometry.jts.JTS" project="sampling-lib" 
+    file="C:/Users/daniel/.m2/repository/org/geotools/gt-api/13.0/gt-api-13.0.jar" binary="true" label="&lt;static&gt;" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="73">      
+      <position height="21" width="0" x="0" y="1556"/>    
+    </execution>  
+  </object>  
+  <object id="97" language="java" name="com.arbonaut.sampling.design.SamplingDesign" project="sampling-lib" 
+    file="/sampling-lib/src/main/java/com/arbonaut/sampling/design/SamplingDesign.java" binary="false" label="sampler" 
+    type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="75">      
+      <position height="21" width="0" x="0" y="1598"/>    
+    </execution>  
+  </object>  
+  <object id="98" language="java" name="com.arbonaut.sampling.design.SimpleRandomSample" project="sampling-lib" 
+    file="/sampling-lib/src/main/java/com/arbonaut/sampling/design/SimpleRandomSample.java" binary="false" 
+    label="simpleRandomSample" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="77">      
+      <position height="1349" width="0" x="0" y="1640"/>    
+    </execution>    
+    <execution id="106">      
+      <position height="1130" width="0" x="0" y="1838"/>    
+    </execution>    
+    <execution id="138">      
+      <position height="387" width="0" x="0" y="2560"/>    
+    </execution>    
+    <execution id="142">      
+      <position height="21" width="0" x="0" y="2654"/>    
+    </execution>    
+    <execution id="148">      
+      <position height="21" width="0" x="0" y="2790"/>    
+    </execution>    
+    <execution id="118">      
+      <position height="21" width="0" x="0" y="2100"/>    
+    </execution>    
+    <execution id="122">      
+      <position height="21" width="0" x="0" y="2194"/>    
+    </execution>    
+    <execution id="134">      
+      <position height="21" width="0" x="0" y="2456"/>    
+    </execution>    
+    <execution id="136">      
+      <position height="21" width="0" x="0" y="2508"/>    
+    </execution>    
+    <execution id="100">      
+      <position height="21" width="0" x="0" y="1682"/>    
+    </execution>    
+    <execution id="102">      
+      <position height="21" width="0" x="0" y="1734"/>    
+    </execution>    
+    <execution id="104">      
+      <position height="21" width="0" x="0" y="1786"/>    
+    </execution>  
+  </object>  
+  <object id="155" language="java" name="com.vividsolutions.jts.geom.Geometry" project="sampling-lib" 
+    file="C:/Users/daniel/.m2/repository/com/vividsolutions/jts/1.13/jts-1.13.jar" binary="true" label="censusGeometry" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="108">      
+      <position height="21" width="0" x="0" y="1869"/>    
+    </execution>  
+  </object>  
+  <object id="156" language="java" name="com.vividsolutions.jts.geom.Envelope" project="sampling-lib" 
+    file="C:/Users/daniel/.m2/repository/com/vividsolutions/jts/1.13/jts-1.13.jar" binary="true" label="envelope" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="110">      
+      <position height="21" width="0" x="0" y="1911"/>    
+    </execution>    
+    <execution id="112">      
+      <position height="21" width="0" x="0" y="1953"/>    
+    </execution>    
+    <execution id="114">      
+      <position height="21" width="0" x="0" y="1995"/>    
+    </execution>    
+    <execution id="116">      
+      <position height="21" width="0" x="0" y="2037"/>    
+    </execution>  
+  </object>  
+  <object id="157" language="java" name="com.vividsolutions.jts.geom.Coordinate" project="sampling-lib" 
+    file="C:/Users/daniel/.m2/repository/com/vividsolutions/jts/1.13/jts-1.13.jar" binary="true" label="c" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="124">      
+      <position height="21" width="0" x="0" y="2225"/>    
+    </execution>  
+  </object>  
+  <object id="158" language="java" name="com.vividsolutions.jts.geom.Coordinate" project="sampling-lib" 
+    file="C:/Users/daniel/.m2/repository/com/vividsolutions/jts/1.13/jts-1.13.jar" binary="true" label="c2" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="126">      
+      <position height="21" width="0" x="0" y="2267"/>    
+    </execution>  
+  </object>  
+  <object id="159" language="java" name="com.arbonaut.sampling.design.cluster.PlotCluster" project="sampling-lib" 
+    file="/sampling-lib/src/main/java/com/arbonaut/sampling/design/cluster/PlotCluster.java" binary="false" 
+    label="cluster" type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="128">      
+      <position height="21" width="0" x="0" y="2309"/>    
+    </execution>  
+  </object>  
+  <object id="160" language="java" name="com.vividsolutions.jts.geom.CoordinateSequence" project="sampling-lib" 
+    file="C:/Users/daniel/.m2/repository/com/vividsolutions/jts/1.13/jts-1.13.jar" binary="true" label="subplots" 
+    type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="130">      
+      <position height="21" width="0" x="0" y="2351"/>    
+    </execution>    
+    <execution id="132">      
+      <position height="21" width="0" x="0" y="2393"/>    
+    </execution>  
+  </object>  
+  <object id="161" language="java" name="com.arbonaut.sampling.util.PlotInPolygonChecker" project="sampling-lib" 
+    file="/sampling-lib/src/main/java/com/arbonaut/sampling/util/PlotInPolygonChecker.java" binary="false" 
+    label="plotChecker" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="140">      
+      <position height="21" width="0" x="0" y="2591"/>    
+    </execution>    
+    <execution id="146">      
+      <position height="21" width="0" x="0" y="2727"/>    
+    </execution>    
+    <execution id="120">      
+      <position height="21" width="0" x="0" y="2131"/>    
+    </execution>  
+  </object>  
+  <object id="162" language="java" name="com.arbonaut.sampling.design.plot.PlotGeometry" project="sampling-lib" 
+    file="/sampling-lib/src/main/java/com/arbonaut/sampling/design/plot/PlotGeometry.java" binary="false" 
+    type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="144">      
+      <position height="21" width="0" x="0" y="2685"/>    
+    </execution>  
+  </object>  
+  <object id="163" language="java" name="com.arbonaut.sampling.design.plot.PlotGeometry" project="sampling-lib" 
+    file="/sampling-lib/src/main/java/com/arbonaut/sampling/design/plot/PlotGeometry.java" binary="false" 
+    type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="150">      
+      <position height="21" width="0" x="0" y="2821"/>    
+    </execution>  
+  </object>  
+  <object id="164" language="java" name="com.arbonaut.sampling.SamplePlot" project="sampling-lib" 
+    file="/sampling-lib/src/main/java/com/arbonaut/sampling/SamplePlot.java" binary="false" label="plot" type="class" 
+    autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="152">      
+      <position height="21" width="0" x="0" y="2863"/>    
+    </execution>  
+  </object>  
+  <object id="165" language="java" name="com.arbonaut.sampling.io.SampleWriter" project="sampling-lib" 
+    file="/sampling-lib/src/main/java/com/arbonaut/sampling/io/SampleWriter.java" binary="false" label="writer" 
+    type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="154">      
+      <position height="21" width="0" x="0" y="2905"/>    
+    </execution>  
+  </object>  
+  <message id="3" 
+    operation="generateSample(java.io.File,java.lang.String,java.util.Map&lt;java.lang.String,java.lang.Integer&gt;,boolean,com.arbonaut.sampling.design.SamplingDesign,com.arbonaut.sampling.io.SampleWriter):void">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="6" operation="exists():boolean">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>  
+  <message id="8" operation="getDataStore(java.io.File):org.geotools.data.FileDataStore">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="9"/>  
+  </message>  
+  <message id="10" operation="getFeatureSource():org.geotools.data.simple.SimpleFeatureSource">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="11"/>  
+  </message>  
+  <message id="12" 
+    operation="generateSample(org.geotools.data.simple.SimpleFeatureSource,java.lang.String,java.util.Map&lt;java.lang.String,java.lang.Integer&gt;,boolean,com.arbonaut.sampling.design.SamplingDesign,com.arbonaut.sampling.io.SampleWriter):void">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="13"/>  
+  </message>  
+  <message id="14" 
+    operation="generateSample(org.geotools.data.simple.SimpleFeatureSource,java.lang.String,java.util.Map&lt;java.lang.String,java.lang.Integer&gt;,boolean,com.arbonaut.sampling.design.SamplingDesign,com.arbonaut.sampling.io.SampleWriter):void">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="15"/>  
+  </message>  
+  <message id="16" operation="values():java.util.Collection&lt;V&gt;">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="17"/>  
+  </message>  
+  <message id="18" operation="iterator():java.util.Iterator&lt;E&gt;">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="19"/>  
+  </message>  
+  <message id="20" operation="next():E">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="21"/>  
+  </message>  
+  <message id="22" 
+    operation="generateSampleForStratum(org.geotools.data.simple.SimpleFeatureCollection,int,java.lang.String,boolean,com.arbonaut.sampling.design.SamplingDesign,com.arbonaut.sampling.io.SampleWriter):void">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="23"/>  
+  </message>  
+  <message id="24" operation="getFeatures():org.geotools.data.simple.SimpleFeatureCollection">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="25"/>  
+  </message>  
+  <message id="26" operation="keySet():java.util.Set&lt;K&gt;">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="27"/>  
+  </message>  
+  <message id="28" operation="get(java.lang.Object):V">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="29"/>  
+  </message>  
+  <message id="30" operation="toFilter(java.lang.String):org.opengis.filter.Filter">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="31"/>  
+  </message>  
+  <message id="32" 
+    operation="generateSampleForStratum(org.geotools.data.simple.SimpleFeatureCollection,int,java.lang.String,boolean,com.arbonaut.sampling.design.SamplingDesign,com.arbonaut.sampling.io.SampleWriter):void">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="33"/>  
+  </message>  
+  <message id="34" operation="getFeatures(org.opengis.filter.Filter):org.geotools.data.simple.SimpleFeatureCollection">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="35"/>  
+  </message>  
+  <message id="36" 
+    operation="generateSampleForStratum(org.geotools.data.simple.SimpleFeatureCollection,int,java.lang.String,boolean,com.arbonaut.sampling.design.SamplingDesign,com.arbonaut.sampling.io.SampleWriter):void">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="37"/>  
+  </message>  
+  <message id="38" operation="ArrayList()">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="39"/>  
+  </message>  
+  <message id="40" operation="features():org.geotools.data.simple.SimpleFeatureIterator">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="41"/>  
+  </message>  
+  <message id="42" operation="hasNext():boolean">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="43"/>  
+  </message>  
+  <message id="44" operation="next():F">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="45"/>  
+  </message>  
+  <message id="46" operation="getDefaultGeometry():java.lang.Object">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="47"/>  
+  </message>  
+  <message id="48" operation="getType():org.opengis.feature.simple.SimpleFeatureType">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="49"/>  
+  </message>  
+  <message id="50" operation="getCoordinateReferenceSystem():org.opengis.referencing.crs.CoordinateReferenceSystem">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="51"/>  
+  </message>  
+  <message id="52" operation="add(E):boolean">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="53"/>  
+  </message>  
+  <message id="54" operation="close():void">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="55"/>  
+  </message>  
+  <message id="56" 
+    operation="lookupEpsgCode(org.opengis.referencing.crs.CoordinateReferenceSystem,boolean):java.lang.Integer">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="57"/>  
+  </message>  
+  <message id="58" operation="println(java.lang.String):void">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="59"/>  
+  </message>  
+  <message id="60" operation="decode(java.lang.String):org.opengis.referencing.crs.CoordinateReferenceSystem">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="61"/>  
+  </message>  
+  <message id="62" 
+    operation="getGeometryFactory(org.geotools.factory.Hints):com.vividsolutions.jts.geom.GeometryFactory">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="63"/>  
+  </message>  
+  <message id="64" operation="buildGeometry(java.util.Collection):com.vividsolutions.jts.geom.Geometry">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="65"/>  
+  </message>  
+  <message id="66" operation="union():com.vividsolutions.jts.geom.Geometry">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="67"/>  
+  </message>  
+  <message id="68" 
+    operation="findBestUTM(com.vividsolutions.jts.geom.Geometry,org.opengis.referencing.crs.CoordinateReferenceSystem):org.opengis.referencing.crs.CoordinateReferenceSystem">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="69"/>  
+  </message>  
+  <message id="70" 
+    operation="findMathTransform(org.opengis.referencing.crs.CoordinateReferenceSystem,org.opengis.referencing.crs.CoordinateReferenceSystem):org.opengis.referencing.operation.MathTransform">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="71"/>  
+  </message>  
+  <message id="72" 
+    operation="transform(com.vividsolutions.jts.geom.Geometry,org.opengis.referencing.operation.MathTransform):com.vividsolutions.jts.geom.Geometry">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="73"/>  
+  </message>  
+  <message id="74" 
+    operation="generate(com.vividsolutions.jts.geom.Geometry,org.opengis.referencing.crs.CoordinateReferenceSystem,int,java.lang.String,com.arbonaut.sampling.io.SampleWriter):void">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="75"/>  
+  </message>  
+  <message id="76" 
+    operation="generate(com.vividsolutions.jts.geom.Geometry,org.opengis.referencing.crs.CoordinateReferenceSystem,int,java.lang.String,com.arbonaut.sampling.io.SampleWriter):void">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="77"/>  
+  </message>  
+  <message id="99" operation="canSampleArea():boolean">    
+    <end type="SOURCE" refId="77"/>    
+    <end type="TARGET" refId="100"/>  
+  </message>  
+  <message id="101" operation="canSampleAlongCurve():boolean">    
+    <end type="SOURCE" refId="77"/>    
+    <end type="TARGET" refId="102"/>  
+  </message>  
+  <message id="103" 
+    operation="doGenerate(com.vividsolutions.jts.geom.Geometry,org.opengis.referencing.crs.CoordinateReferenceSystem,int,java.lang.String,com.arbonaut.sampling.io.SampleWriter):void">    
+    <end type="SOURCE" refId="77"/>    
+    <end type="TARGET" refId="104"/>  
+  </message>  
+  <message id="105" 
+    operation="doGenerate(com.vividsolutions.jts.geom.Geometry,org.opengis.referencing.crs.CoordinateReferenceSystem,int,java.lang.String,com.arbonaut.sampling.io.SampleWriter):void">    
+    <end type="SOURCE" refId="77"/>    
+    <end type="TARGET" refId="106"/>  
+  </message>  
+  <message id="107" operation="getEnvelopeInternal():com.vividsolutions.jts.geom.Envelope">    
+    <end type="SOURCE" refId="106"/>    
+    <end type="TARGET" refId="108"/>  
+  </message>  
+  <message id="109" operation="getMinX():double">    
+    <end type="SOURCE" refId="106"/>    
+    <end type="TARGET" refId="110"/>  
+  </message>  
+  <message id="111" operation="getMaxX():double">    
+    <end type="SOURCE" refId="106"/>    
+    <end type="TARGET" refId="112"/>  
+  </message>  
+  <message id="113" operation="getMinY():double">    
+    <end type="SOURCE" refId="106"/>    
+    <end type="TARGET" refId="114"/>  
+  </message>  
+  <message id="115" operation="getMaxY():double">    
+    <end type="SOURCE" refId="106"/>    
+    <end type="TARGET" refId="116"/>  
+  </message>  
+  <message id="117" operation="getPlotClustering():com.arbonaut.sampling.design.cluster.PlotCluster">    
+    <end type="SOURCE" refId="106"/>    
+    <end type="TARGET" refId="118"/>  
+  </message>  
+  <message id="119" 
+    operation="PlotInPolygonChecker(com.vividsolutions.jts.geom.Polygonal,com.arbonaut.sampling.design.plot.PlotGeometry)">    
+    <end type="SOURCE" refId="106"/>    
+    <end type="TARGET" refId="120"/>  
+  </message>  
+  <message id="121" operation="getPlotGeometry():com.arbonaut.sampling.design.plot.PlotGeometry">    
+    <end type="SOURCE" refId="106"/>    
+    <end type="TARGET" refId="122"/>  
+  </message>  
+  <message id="123" operation="Coordinate()">    
+    <end type="SOURCE" refId="106"/>    
+    <end type="TARGET" refId="124"/>  
+  </message>  
+  <message id="125" operation="Coordinate()">    
+    <end type="SOURCE" refId="106"/>    
+    <end type="TARGET" refId="126"/>  
+  </message>  
+  <message id="127" 
+    operation="create(com.vividsolutions.jts.geom.Coordinate):com.vividsolutions.jts.geom.CoordinateSequence">    
+    <end type="SOURCE" refId="106"/>    
+    <end type="TARGET" refId="128"/>  
+  </message>  
+  <message id="129" operation="size():int">    
+    <end type="SOURCE" refId="106"/>    
+    <end type="TARGET" refId="130"/>  
+  </message>  
+  <message id="131" operation="getCoordinate(int,com.vividsolutions.jts.geom.Coordinate):void">    
+    <end type="SOURCE" refId="106"/>    
+    <end type="TARGET" refId="132"/>  
+  </message>  
+  <message id="133" 
+    operation="sampleSinglePoint(com.vividsolutions.jts.geom.Coordinate,org.opengis.referencing.crs.CoordinateReferenceSystem,int,int,java.lang.String,com.arbonaut.sampling.io.SampleWriter,com.arbonaut.sampling.util.PlotInPolygonChecker):boolean">    
+    <end type="SOURCE" refId="106"/>    
+    <end type="TARGET" refId="134"/>  
+  </message>  
+  <message id="135" 
+    operation="sampleSinglePoint(com.vividsolutions.jts.geom.Coordinate,org.opengis.referencing.crs.CoordinateReferenceSystem,int,int,java.lang.String,com.arbonaut.sampling.io.SampleWriter,com.arbonaut.sampling.util.PlotInPolygonChecker):boolean">    
+    <end type="SOURCE" refId="106"/>    
+    <end type="TARGET" refId="136"/>  
+  </message>  
+  <message id="137" 
+    operation="sampleSinglePoint(com.vividsolutions.jts.geom.Coordinate,org.opengis.referencing.crs.CoordinateReferenceSystem,int,int,java.lang.String,com.arbonaut.sampling.io.SampleWriter,com.arbonaut.sampling.util.PlotInPolygonChecker):boolean">    
+    <end type="SOURCE" refId="106"/>    
+    <end type="TARGET" refId="138"/>  
+  </message>  
+  <message id="139" operation="centreTest(com.vividsolutions.jts.geom.Coordinate):int">    
+    <end type="SOURCE" refId="138"/>    
+    <end type="TARGET" refId="140"/>  
+  </message>  
+  <message id="141" operation="getPlotGeometry():com.arbonaut.sampling.design.plot.PlotGeometry">    
+    <end type="SOURCE" refId="138"/>    
+    <end type="TARGET" refId="142"/>  
+  </message>  
+  <message id="143" operation="create(com.vividsolutions.jts.geom.Coordinate):com.vividsolutions.jts.geom.Geometry">    
+    <end type="SOURCE" refId="138"/>    
+    <end type="TARGET" refId="144"/>  
+  </message>  
+  <message id="145" operation="contains(com.vividsolutions.jts.geom.Geometry):boolean">    
+    <end type="SOURCE" refId="138"/>    
+    <end type="TARGET" refId="146"/>  
+  </message>  
+  <message id="147" operation="getPlotGeometry():com.arbonaut.sampling.design.plot.PlotGeometry">    
+    <end type="SOURCE" refId="138"/>    
+    <end type="TARGET" refId="148"/>  
+  </message>  
+  <message id="149" operation="create(com.vividsolutions.jts.geom.Coordinate):com.vividsolutions.jts.geom.Geometry">    
+    <end type="SOURCE" refId="138"/>    
+    <end type="TARGET" refId="150"/>  
+  </message>  
+  <message id="151" 
+    operation="SamplePlot(com.vividsolutions.jts.geom.Geometry,org.opengis.referencing.crs.CoordinateReferenceSystem,java.lang.String,int,int)">    
+    <end type="SOURCE" refId="138"/>    
+    <end type="TARGET" refId="152"/>  
+  </message>  
+  <message id="153" operation="write(com.arbonaut.sampling.SamplePlot):void">    
+    <end type="SOURCE" refId="138"/>    
+    <end type="TARGET" refId="154"/>  
+  </message>
+</sequence-diagram>
