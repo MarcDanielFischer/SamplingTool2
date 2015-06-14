@@ -7,6 +7,8 @@ import com.vividsolutions.jts.geom.impl.CoordinateArraySequence;
 
 /**
  * Grid-shaped plot cluster.
+ * This cluster plot design allows the flexible creation 
+ * of X*Y plots grid clusters.
  */
 public class GridShapedCluster implements PlotCluster {
     
@@ -18,12 +20,12 @@ public class GridShapedCluster implements PlotCluster {
     
     
     /**
-     * GridShapedCluster constructor.
+     * Constructor.
      * The first sub-plot is in the upper left (=north-western) corner.
-     * @param xDistance  Distance between sub-plots along the x axis     
-     * @param yDistance  Distance between sub-plots along the y axis  
-     * @param numPlotsX   Number of sub-plots along the x axis   
-     * @param numPlotsY   Number of sub-plots along the y axis     
+     * @param xDistance  distance between sub-plots along the x axis     
+     * @param yDistance  distance between sub-plots along the y axis  
+     * @param numPlotsX  number of sub-plots along the x axis   
+     * @param numPlotsY  number of sub-plots along the y axis     
      */              
     public GridShapedCluster(double xDistance, double yDistance, int numPlotsX, int numPlotsY)
     {
@@ -34,11 +36,11 @@ public class GridShapedCluster implements PlotCluster {
     }
     
     /**
-     * GridShapedCluster constructor.
-     * The first sub-plot is in the upper left (=north-western)corner.
-     * @param gridDistance  Distance between sub-plots in both directions  
-     * @param numPlotsX   Number of sub-plots along the x axis   
-     * @param numPlotsY   Number of sub-plots along the y axis    
+     * Constructor.
+     * The first sub-plot is in the upper left (=north-western) corner.
+     * @param gridDistance  distance between sub-plots in both directions  
+     * @param numPlotsX     number of sub-plots along the x axis   
+     * @param numPlotsY     number of sub-plots along the y axis    
      */              
     public GridShapedCluster(double gridDistance, int numPlotsX, int numPlotsY)
     {
@@ -52,8 +54,7 @@ public class GridShapedCluster implements PlotCluster {
         double x = centre.x;
 		double y = centre.y;
         
-		//nested loop: for each plots along the x axis create all plots along the y axis
-		// 
+		//nested loop: for each plot along the x axis create all plots along the y axis
 		for(int i = 0; i < numPlotsX; i++){
 			// loop over numPlotsY
 			for(int k = 0; k < numPlotsY; k++){

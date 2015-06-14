@@ -1,20 +1,12 @@
 package com.arbonaut.sampling.util;
 
-import java.util.ArrayList;
-
-import org.geotools.feature.simple.SimpleFeatureImpl;
 import org.geotools.geometry.jts.JTS;
-import org.geotools.geometry.jts.ReferencedEnvelope;
 import org.geotools.referencing.CRS;
-import org.opengis.feature.simple.SimpleFeature;
-import org.opengis.geometry.BoundingBox;
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
 import org.opengis.referencing.operation.MathTransform;
 
 import com.vividsolutions.jts.geom.Envelope;
 import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.geom.Point;
-import com.vividsolutions.jts.geom.Polygon;
 import com.vividsolutions.jts.geom.Polygonal;
 
 
@@ -52,16 +44,13 @@ public final class UTMFinder {
     findBestUTM(Geometry geom, CoordinateReferenceSystem crs) throws Exception 
     {
         // forces x/y order, otherwise axis order might be messed up by the JTS.transform() method
-        //System.setProperty("org.geotools.referencing.forceXY", "true"); 
+        // System.setProperty("org.geotools.referencing.forceXY", "true"); 
         
 		CoordinateReferenceSystem standardGeographicCRS = CRS.decode("EPSG:4326");
         
 		// check if feature CRS is different from EPSG:4326
 		boolean needsReproject = !CRS.equalsIgnoreMetadata(standardGeographicCRS, crs);
 		
-		// values we need to find a matching UTM zone for the input feature
-		
-        
         // if feature CRS is different from EPSG:4326
 		if (needsReproject) {
         
@@ -102,11 +91,6 @@ public final class UTMFinder {
 		 * EPSG codes for UTM zones 1-60 S : 32701 - 32760 (all for WGS84 Datum, there are others, too)
 		 * --> Formula: if(northernHemisphere) EPSG = 32600 + utmZone
 		 * if(southernHemisphere) EPSG = 32700 + utmZone
-		 * bei Hemisphärenüberschreitenden features: Lat-Mittelwert ((latMin + latMax) / 2) versuchen,
-		 * könnte unerwartetes Verhalten verursachen bei evtl. negativen Hochwerten 
-		 * (wenn latMean auf Nordhalbkugel liegt und sich ein feature auch auf die Südhalbkugel erstreckt)
-		 * --> Testen
-		 * (dann evtl mit UTM-Südzonen probieren, die haben false northing, da gibts keine negativen Werte)
 		 */
 		
 		double latMean = (latMin + latMax)/2;
@@ -135,11 +119,14 @@ public final class UTMFinder {
     
     /**
 	 * Derive UTM Zone for a given longitude value.
+	 * Note: this method is only designed to deliver correct output
+	 * for regularly-shaped UTM zones, so it will not work correctly for
+	 * areas located in irregular UTM zones (e.g. parts of Norway and the
+	 * north arctic ocean)
 	 * @param longitude
 	 * @return UTM Zone
 	 */
 	public static int longitude2UTM(double longitude) {
-		// TODO Ausnahmen: Norwegen etc. --> also auch abhängig von Latitude --> evtl behandeln --> start: welche Zonen sind überhaupt irregulär?
 		int utmZone = (int)Math.floor(((longitude + 180) / 6) +1);
 		if(utmZone > 60) utmZone = utmZone % 60; // if input longitude is > 180 for some reason (and output UTM zone is > 60 then)
 		return utmZone;

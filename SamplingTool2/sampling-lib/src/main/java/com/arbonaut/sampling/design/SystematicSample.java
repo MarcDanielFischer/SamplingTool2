@@ -1,24 +1,18 @@
 package com.arbonaut.sampling.design;
 
-import java.util.ArrayList;
+import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 import com.arbonaut.sampling.SamplePlot;
-import com.arbonaut.sampling.io.SampleWriter;
-import com.arbonaut.sampling.design.plot.PlotGeometry;
 import com.arbonaut.sampling.design.cluster.PlotCluster;
+import com.arbonaut.sampling.design.plot.PlotGeometry;
+import com.arbonaut.sampling.io.SampleWriter;
 import com.arbonaut.sampling.util.PlotInPolygonChecker;
-import com.vividsolutions.jts.geom.Envelope;
-import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.geom.Point;
-import com.vividsolutions.jts.geom.Polygonal;
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.CoordinateSequence;
-import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.geom.Envelope;
+import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Location;
-
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
-import org.opengis.referencing.crs.ProjectedCRS;
-import org.geotools.geometry.jts.JTSFactoryFinder;
+import com.vividsolutions.jts.geom.Polygonal;
 
 
 /**
@@ -34,11 +28,10 @@ public class SystematicSample extends SamplingDesignBase {
     
     /**
      * Constructor for SystematicSample without a specified starting point.
-     * 
-     * @param xDistance grid point distance in x direction
-     * @param yDistance grid point distance in y direction
-     * @param plotGeometry Plot geometry factory defining the shape of each plot   
-     * @param plotClustering Plot cluster instance or null not to generate clustered  
+     * @param xDistance      grid point distance in x direction
+     * @param yDistance      grid point distance in y direction
+     * @param plotGeometry   plot geometry factory defining the shape of each plot   
+     * @param plotClustering plot cluster instance or null not to generate clustered  
      */
     public SystematicSample(double xDistance, double yDistance, PlotGeometry plotGeometry, PlotCluster plotClustering) 
     {
@@ -49,12 +42,11 @@ public class SystematicSample extends SamplingDesignBase {
     
     /**
      * Constructor for SystematicSample with a specified starting point.
-     * 
-     * @param xDistance grid point distance in x direction
-     * @param yDistance grid point distance in y direction
-     * @param startPoint start point for the construction of the grid
-     * @param plotGeometry Plot geometry factory defining the shape of each plot   
-     * @param plotClustering Plot cluster instance or null not to generate clustered  
+     * @param xDistance      grid point distance in x direction
+     * @param yDistance      grid point distance in y direction
+     * @param startPoint     start point for grid construction
+     * @param plotGeometry   plot geometry factory defining the shape of each plot   
+     * @param plotClustering plot cluster instance or null not to generate clustered  
      */
     public SystematicSample(double xDistance, double yDistance, Coordinate startPoint, PlotGeometry plotGeometry, PlotCluster plotClustering) 
     {
@@ -108,7 +100,6 @@ public class SystematicSample extends SamplingDesignBase {
                 if (added) { numPlots ++;}  
             }
 		}
-      
     }
     
     private Coordinate[] createGridCoords(Geometry censusGeometry, PlotInPolygonChecker plotChecker ) throws Exception{

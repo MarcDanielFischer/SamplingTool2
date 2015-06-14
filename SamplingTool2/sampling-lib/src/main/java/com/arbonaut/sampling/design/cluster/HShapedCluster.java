@@ -20,15 +20,16 @@ public class HShapedCluster implements PlotCluster {
     
     
     /**
-     * HShapedCluster constructor.
-     * The number of sub-plots is determined separately for the
+     * Constructor.
+     * The number of sub-plots is specified separately for the
      * vertical and horizontal lines of the H. 
      * Note: sub-plots located on both horizontal AND vertical lines 
-	 * are considered to belong only to vertical lines (so in case of odd number of plots in vertical  lines 
-	 * the horizontal line endpoints do not belong to horizontal line but to vertical lines instead) 
-     * @param plotDistance  Distance between sub-plots     
-     * @param numPlotsVerticalLine   number of sub-plots per vertical line.
-	 * @param numPlotsHorizontalLine: number of sub-plots per horizontal line.
+	 * are considered to belong only to vertical lines (so in case of odd number 
+	 * of plots in vertical  lines the horizontal line end points
+	 * do not belong to the horizontal line but to the vertical lines instead). 
+     * @param plotDistance           distance between sub-plots     
+     * @param numPlotsVerticalLine   number of sub-plots per vertical line
+	 * @param numPlotsHorizontalLine number of sub-plots per horizontal line
 	 * 
      */              
     public HShapedCluster(double plotDistance, int numPlotsVerticalLine, int numPlotsHorizontalLine)

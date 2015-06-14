@@ -17,10 +17,9 @@ public class IShapedCluster implements PlotCluster {
     private int numPlots;  
     
     /**
-     * IShapedCluster constructor.
-     *
-     * @param ydistance  Distance between sub-plots along the y axis     
-     * @param numPlots   Number of plots in the cluster     
+     * Constructor.
+     * @param ydistance  distance between sub-plots along the y axis     
+     * @param numPlots   number of plots in the cluster     
      */              
     public IShapedCluster(double ydistance, int numPlots)
     {

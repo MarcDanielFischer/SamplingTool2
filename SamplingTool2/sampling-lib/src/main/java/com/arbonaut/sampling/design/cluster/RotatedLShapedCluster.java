@@ -15,11 +15,12 @@ public class RotatedLShapedCluster implements PlotCluster {
     private int numPlots;  
     
     /**
-     * LShapedCluster constructor.
-     *
-     * @param plotDistance  Distance between sub-plots   
-     * @param numPlots   Number of plots in the cluster     
-     */              
+     * Constructor.
+     * @param plotDistance  distance between sub-plots   
+     * @param numPlots      number of plots in the cluster. In case of
+     *                      an even total Plot number, the vertical
+     *                      axis will be one Plot longer than the horizontal axis.     
+     */   
     public RotatedLShapedCluster(double plotDistance, int numPlots)
     {
         this.plotDistance = plotDistance;

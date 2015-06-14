@@ -2,37 +2,33 @@
 package com.arbonaut.sampling;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Set;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.HashMap;
-import java.util.ArrayList;
+import java.util.Set;
 
-import com.arbonaut.sampling.design.SamplingDesign;
-import com.arbonaut.sampling.SamplePlot;
-import com.arbonaut.sampling.io.SampleWriter;
-import com.arbonaut.sampling.util.UTMFinder;
-
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.geotools.data.FileDataStore;
+import org.geotools.data.FileDataStoreFinder;
+import org.geotools.data.simple.SimpleFeatureCollection;
+import org.geotools.data.simple.SimpleFeatureIterator;
+import org.geotools.data.simple.SimpleFeatureSource;
+import org.geotools.filter.text.cql2.CQL;
+import org.geotools.geometry.jts.JTS;
+import org.geotools.geometry.jts.JTSFactoryFinder;
+import org.geotools.referencing.CRS;
 import org.opengis.feature.simple.SimpleFeature;
 import org.opengis.filter.Filter;
+import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.opengis.referencing.operation.MathTransform;
+
+import com.arbonaut.sampling.design.SamplingDesign;
+import com.arbonaut.sampling.io.SampleWriter;
+import com.arbonaut.sampling.util.UTMFinder;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryCollection;
 import com.vividsolutions.jts.geom.GeometryFactory;
-import org.geotools.geometry.jts.JTSFactoryFinder;
-import org.geotools.geometry.jts.JTS;
-import org.geotools.data.FileDataStore;
-import org.geotools.data.FileDataStoreFinder;
-import org.geotools.data.simple.SimpleFeatureSource;
-import org.geotools.data.simple.SimpleFeatureCollection;
-import org.geotools.data.simple.SimpleFeatureIterator;
-import org.geotools.filter.text.cql2.CQL;
-import org.geotools.referencing.CRS;
-import org.opengis.referencing.operation.MathTransform;
-
-
-import com.arbonaut.sampling.io.CsvSampleWriter; 
 
 
 /**
@@ -201,8 +197,8 @@ public final class Sampling {
         // Have stratum columns so generate distinct sample for each stratum
         else
         {
-        	//former code version produces an error if not all unique strata are contained in the Map
-        	// (if only some strata shall be used for sampling).
+        	// former code version produces an error if not all unique strata are 
+        	// contained in the Map (if only some strata shall be used for sampling).
         	// --> use the Map directly instead of iterating over unique strata
         	Set<String> strata = sampleSize.keySet();
         	for (String stratum : strata)

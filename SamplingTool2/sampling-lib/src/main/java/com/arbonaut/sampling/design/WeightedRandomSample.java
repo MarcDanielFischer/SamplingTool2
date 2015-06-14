@@ -1,33 +1,28 @@
 package com.arbonaut.sampling.design;
 
 import java.io.File;
-import java.util.ArrayList;
 
-import com.arbonaut.sampling.SamplePlot;
-import com.arbonaut.sampling.io.SampleWriter;
-import com.arbonaut.sampling.design.plot.PlotGeometry;
-import com.arbonaut.sampling.design.cluster.PlotCluster;
-import com.arbonaut.sampling.util.PlotInPolygonChecker;
-import com.arbonaut.sampling.util.RasterProcessing;
-import com.vividsolutions.jts.geom.Envelope;
-import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.geom.Polygonal;
-import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.CoordinateSequence;
-import com.vividsolutions.jts.geom.GeometryFactory;
-import com.vividsolutions.jts.geom.Location;
-
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
-import org.opengis.referencing.crs.ProjectedCRS;
-import org.opengis.referencing.operation.MathTransform;
 import org.geotools.coverage.grid.GridCoverage2D;
 import org.geotools.geometry.jts.JTS;
-import org.geotools.geometry.jts.JTSFactoryFinder;
 import org.geotools.referencing.CRS;
+import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.opengis.referencing.operation.MathTransform;
+
+import com.arbonaut.sampling.SamplePlot;
+import com.arbonaut.sampling.design.cluster.PlotCluster;
+import com.arbonaut.sampling.design.plot.PlotGeometry;
+import com.arbonaut.sampling.io.SampleWriter;
+import com.arbonaut.sampling.util.PlotInPolygonChecker;
+import com.arbonaut.sampling.util.RasterProcessing;
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.CoordinateSequence;
+import com.vividsolutions.jts.geom.Envelope;
+import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.geom.Location;
+import com.vividsolutions.jts.geom.Polygonal;
 
 /**
  * Implements weighted random sampling strategy.
- * 
  */
 public class WeightedRandomSample extends SamplingDesignBase {
 	
@@ -36,11 +31,11 @@ public class WeightedRandomSample extends SamplingDesignBase {
     
     /**
      * Constructor.
-     * 
-     * @param pgeom   Plot geometry factory defining the shape of each plot     
-     * @param cluster Plot cluster instance or null not to generate clustered  
-     *                sample                   
-     */         
+     * @param raster         raster to be used in weighted sampling 
+     * @param plotGeometry   plot geometry factory defining the shape of each plot    
+     * @param plotClustering plot cluster instance or null not to generate clustered  
+     *                       sample 
+     */
     public WeightedRandomSample(GridCoverage2D raster, PlotGeometry plotGeometry, PlotCluster plotClustering) 
     {
         super(plotGeometry, plotClustering);
@@ -49,11 +44,10 @@ public class WeightedRandomSample extends SamplingDesignBase {
     
     /**
      * Constructor.
-     * 
-     * @param geoTiff input raster file (geoTiff format)
-     * @param pgeom   Plot geometry factory defining the shape of each plot     
-     * @param cluster Plot cluster instance or null not to generate clustered  
-     *                sample                   
+     * @param geoTiff        raster to be used in weighted sampling (geoTiff format)
+     * @param plotGeometry   plot geometry factory defining the shape of each plot     
+     * @param plotClustering plot cluster instance or null not to generate clustered  
+     *                       sample                   
      */         
     public WeightedRandomSample(File geoTiff, PlotGeometry plotGeometry, PlotCluster plotClustering) 
     {
@@ -74,36 +68,32 @@ public class WeightedRandomSample extends SamplingDesignBase {
                               int sampleSize, String stratumName,
                               SampleWriter writer) throws Exception
     {
-    	// check if CRS are different
+    	// check if census and raster CRS are different
     	CoordinateReferenceSystem crsRaster = this.raster.getCoordinateReferenceSystem();
     	boolean needsReproject = !CRS.equalsIgnoreMetadata(censusCRS, crsRaster);
     	// we need to maintain our original Geometry in a metric CRS so it can be used with plotChecker
     	Geometry clipGeom = censusGeometry; 
-    	// use raster CRS
     	if (needsReproject) {
     		MathTransform transform = CRS.findMathTransform(censusCRS, crsRaster, true);
-    		// reprojects censusGeometry towards raster CRS -->  don´t know if that is a good idea here
+    		// reprojects censusGeometry towards raster CRS
     		clipGeom  = JTS.transform(censusGeometry, transform);
     	}
     	GridCoverage2D clippedCoverage = RasterProcessing.getClippedCoverage(clipGeom, this.raster);
     	double maxValue = RasterProcessing.getCoverageMaxValue(clippedCoverage, 0);
     	double noDataValue = RasterProcessing.getNoDataValue(this.raster, 0);
     	
-    	/////////////////////////////////////////////////////////////////////////
-    	
     	// variables used in loop
         PlotCluster cluster = this.getPlotClustering();
         PlotInPolygonChecker plotChecker = new PlotInPolygonChecker(
 	            (Polygonal)censusGeometry, this.getPlotGeometry());
         
-        ////////////////////////////////////////////////////////////////////////
         int numPlots = 0;
     	while (numPlots < sampleSize){
     		 // get random point in geom
     		Coordinate c = createRandCoordInGeom(censusGeometry);
     		 
     		// get raster value at coord position 
-    		double plotValue = RasterProcessing.getValueAtPosition(this.raster, c, censusCRS, (double[]) null)[0];
+    		double plotValue = RasterProcessing.getValueAtPosition(this.raster, c, censusCRS)[0];
     		// throw exception if plot has nodata value
     		if(plotValue == noDataValue){
     			throw new Exception("Plot does not have a corresponding raster pixel value.\n"
@@ -153,15 +143,8 @@ public class WeightedRandomSample extends SamplingDesignBase {
 			    	writer.write(plot);
 			    	numPlots++;
     			}
-
     		}
-
     	}
-    	////////////////////////////////////////////////////////////////////
-
-
-    	
-
     }
     
     private Coordinate createRandCoordInGeom(Geometry censusGeometry){

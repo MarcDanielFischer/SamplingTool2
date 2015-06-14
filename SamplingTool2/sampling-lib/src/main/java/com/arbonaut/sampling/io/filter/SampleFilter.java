@@ -1,7 +1,6 @@
 
 package com.arbonaut.sampling.io.filter;
 
-import java.io.IOException;
 import com.arbonaut.sampling.SamplePlot;
 
 

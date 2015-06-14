@@ -1,17 +1,16 @@
 
 package com.arbonaut.sampling.io.filter;
 
-import java.io.IOException;
-import com.arbonaut.sampling.SamplePlot;
-import com.arbonaut.sampling.BadCRSException;
-
-import com.vividsolutions.jts.geom.Geometry;
-import org.opengis.referencing.NoSuchAuthorityCodeException;
+import org.geotools.geometry.jts.JTS;
+import org.geotools.referencing.CRS;
 import org.opengis.referencing.FactoryException;
+import org.opengis.referencing.NoSuchAuthorityCodeException;
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
 import org.opengis.referencing.operation.MathTransform;
-import org.geotools.referencing.CRS;
-import org.geotools.geometry.jts.JTS;
+
+import com.arbonaut.sampling.BadCRSException;
+import com.arbonaut.sampling.SamplePlot;
+import com.vividsolutions.jts.geom.Geometry;
 
 
 /**

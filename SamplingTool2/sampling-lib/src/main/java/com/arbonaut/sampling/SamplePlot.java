@@ -31,9 +31,9 @@ public class SamplePlot {
 	
 	/**
 	 * Constructs a SamplePlot object without clusterNr or plotNr.
-	 * @param point
-	 * @param stratumName
-	 * @param CRS
+	 * @param geom        the plot Geometry
+	 * @param crs         the CoordinateReferenceSystem associated with the plot Geometry
+	 * @param stratumName name of the Stratum the plot lies in
 	 */
 	public SamplePlot(Geometry geom, CoordinateReferenceSystem crs, String stratumName) {
 		this.geometry = geom;
@@ -42,11 +42,11 @@ public class SamplePlot {
 	}
 	
 	/**
-	 * Constructs a SamplePlot object with a plotNr, but without a clusterNr (for CLUSTERSAMPLING_NO option)
-	 * @param point
-	 * @param stratumName
-	 * @param CRS
-	 * @param plotNr
+	 * Constructs a SamplePlot object with a plotNr, but without a clusterNr (for NO_CLUSTER option)
+	 * @param geom        the plot Geometry
+	 * @param crs         the CoordinateReferenceSystem associated with the plot Geometry
+	 * @param stratumName name of the Stratum the plot lies in
+	 * @param plotNr      plot number  
 	 */
 	public SamplePlot(Geometry geom, CoordinateReferenceSystem crs, String stratumName, int plotNr) {
 		this(geom, crs, stratumName);
@@ -55,11 +55,11 @@ public class SamplePlot {
 	
 	/**
 	 * Constructs a SamplePlot object with plotNr and clusterNr
-	 * @param point
-	 * @param stratumName
-	 * @param CRS
-	 * @param plotNr
-	 * @param clusterNr
+	 * @param geom        the plot Geometry
+	 * @param crs         the CoordinateReferenceSystem associated with the plot Geometry
+	 * @param stratumName name of the Stratum the plot lies in
+	 * @param plotNr      plot number  
+	 * @param clusterNr   cluster number
 	 */
 	public SamplePlot(Geometry geom, CoordinateReferenceSystem crs, String stratumName, int plotNr, int clusterNr) {
 		this(geom, crs, stratumName, plotNr);
@@ -67,12 +67,14 @@ public class SamplePlot {
 	}
 	
 	/**
-	 * Constructs a SamplePlot object with plotNr and clusterNr
-	 * @param point
-	 * @param stratumName
-	 * @param CRS
-	 * @param plotNr
-	 * @param clusterNr
+	 * Constructs a SamplePlot object with plotNr, clusterNr and a weight value 
+	 * (for weighted sampling).
+	 * @param geom        the plot Geometry
+	 * @param crs         the CoordinateReferenceSystem associated with the plot Geometry
+	 * @param stratumName name of the Stratum the plot lies in
+	 * @param plotNr      plot number  
+	 * @param clusterNr   cluster number
+	 * @param weight      plot weight
 	 */
 	public SamplePlot(Geometry geom, CoordinateReferenceSystem crs, 
 			String stratumName, int plotNr, int clusterNr, double weight) {
@@ -81,12 +83,13 @@ public class SamplePlot {
 	}
 	
 	/**
-	 * Constructs a SamplePlot object with plotNr and clusterNr
-	 * @param point
-	 * @param stratumName
-	 * @param CRS
-	 * @param plotNr
-	 * @param clusterNr
+	 * Constructs a SamplePlot object with plotNr and a weight value 
+	 * (for weighted sampling without plot clusters).
+	 * @param geom        the plot Geometry
+	 * @param crs         the CoordinateReferenceSystem associated with the plot Geometry
+	 * @param stratumName name of the Stratum the plot lies in
+	 * @param plotNr      plot number  
+	 * @param weight      plot weight
 	 */
 	public SamplePlot(Geometry geom, CoordinateReferenceSystem crs, 
 			String stratumName, int plotNr, double weight) {
@@ -97,6 +100,9 @@ public class SamplePlot {
     
     /**
 	 * Constructs new SamplePlot from existing instance but with geometry replaced.
+	 * @param plot     existing plot
+	 * @param newgeom  new Geometry to be associated with the plot
+	 * @param newcrs   crs to be associated with the new plot Geometry
 	 */
 	public SamplePlot(SamplePlot plot, Geometry newgeom, CoordinateReferenceSystem newcrs) {
        this.geometry = newgeom;

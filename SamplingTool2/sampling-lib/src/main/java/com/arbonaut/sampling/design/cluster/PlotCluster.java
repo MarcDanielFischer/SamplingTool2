@@ -1,7 +1,6 @@
 
 package com.arbonaut.sampling.design.cluster;
 
-import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.CoordinateSequence;
 

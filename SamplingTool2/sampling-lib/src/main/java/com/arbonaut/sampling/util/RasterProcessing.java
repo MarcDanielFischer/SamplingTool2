@@ -40,16 +40,15 @@ public class RasterProcessing {
 	
 	/**
 	 * Queries raster pixel values at given Plot location.
-	 * This method is overloaded so that it fits both raster files with integer as well as floating point values.
 	 * Works with multiband rasters, too.
 	 * {@link http://docs.geotools.org/latest/userguide/library/coverage/grid.html}
 	 * @param coverage the input raster
-	 * @param plot position at which the raster shall be queried
-	 * @param dest specifies a raster with floating-point values (double type)
-	 * @return array containing raster pixel values for all bands at the specified position. 
+	 * @param coord    position at which the raster shall be queried
+	 * @param coordCrs crs associated with the Coordinate
+	 * @return         array containing raster pixel values for all bands at the specified position. 
 	 * @throws Exception
 	 */
-	public static double[] getValueAtPosition(GridCoverage2D coverage, Coordinate coord, CoordinateReferenceSystem coordCrs, double[] dest) throws Exception{
+	public static double[] getValueAtPosition(GridCoverage2D coverage, Coordinate coord, CoordinateReferenceSystem coordCrs) throws Exception{
 		// check if CRS from Plot and Raster are different and reproject if needed
 		CoordinateReferenceSystem crsRaster = coverage.getCoordinateReferenceSystem();
 		boolean needsReproject = !CRS.equalsIgnoreMetadata(coordCrs, crsRaster);
@@ -65,17 +64,17 @@ public class RasterProcessing {
 		
 		DirectPosition position = new DirectPosition2D( crsRaster, coord.x, coord.y);
 		
-		double[] value =coverage.evaluate(position, (double[]  ) null);
+		double[] value =coverage.evaluate(position, (double[]) null);
 		return value;
 	}
 	
 	
 	/**
-	 * Clips a Geometry from an input GridCoverage2D.
-	 * @param clipGeometry must have the same CRS as coverage. This is provided when 
-	 * clipGeometries have been extracted using the getClipGeometries() method.
-	 * @param coverage
-	 * @return
+	 * Clips a given Geometry from a given GridCoverage2D.
+	 * The Geometry must have the same CRS as the Coverage.
+	 * @param clipGeometry geometry to be clipped from a coverage
+	 * @param coverage     raster used for clipping
+	 * @return             clipped Coverage2D object
 	 */
 	public static GridCoverage2D getClippedCoverage(Geometry clipGeometry, GridCoverage2D coverage){
 		ArrayList<Geometry> clipGeometries = new ArrayList<Geometry>();
@@ -85,11 +84,11 @@ public class RasterProcessing {
 	
 	
 	/**
-	 * Clips an input GridCoverage2D using ArrayList<Geometry> clipGeometries.
-	 * @param clipGeometries must have the same CRS as coverage. This is provided when 
-	 * clipGeometries have been extracted using the getClipGeometries() method.
-	 * @param coverage
-	 * @return
+	 * Clips given Geometries from a given GridCoverage2D.
+	 * The Geometries must have the same CRS as the Coverage.
+	 * @param clipGeometries geometries to be clipped from a coverage
+	 * @param coverage       raster used for clipping
+	 * @return               clipped Coverage2D object
 	 */
 	public static GridCoverage2D getClippedCoverage(ArrayList<Geometry> clipGeometries, GridCoverage2D coverage){
 		CoverageProcessor processor = new CoverageProcessor();
@@ -109,8 +108,8 @@ public class RasterProcessing {
 	
 	/**
 	 * Convenience method for reading GeoTIFF raster files.
-	 * @param rasterFile
-	 * @return the GeoTIFF raster file as a GridCoverage2D object
+	 * @param rasterFile input GeoTIFF file
+	 * @return           GridCoverage2D object
 	 * @throws Exception
 	 */
 	public static GridCoverage2D readGeoTiff(File rasterFile) throws Exception{
@@ -123,16 +122,18 @@ public class RasterProcessing {
 
 	
 	/**
-	 * Gets the NODATA value of the specified band of a GridCoverage2D object. For use with weight rasters: bandIndex should always be 0
-	 * as weight rasters are supposed to only have 1 band. If there is no category named "No data", return value will be
+	 * Gets the NODATA value of the specified band of a GridCoverage2D object. For use 
+	 * with weight rasters: bandIndex should always be 0
+	 * as weight rasters are supposed to only have 1 band. If there is no category 
+	 * named "No data", return value will be
 	 * Double.NEGATIVE_INFINITY.
-	 * @param coverage input raster 
+	 * @param coverage  input raster 
 	 * @param bandIndex the band to get the NODATA value from
 	 * @return noDataValue
 	 * @throws Exception
 	 */
 	public static double getNoDataValue(GridCoverage2D coverage, int bandIndex) throws Exception{
-		double noDataValue = Double.NEGATIVE_INFINITY; // is that a wise thing to do here? --> primitive variables cannot be set to NULL, so i need a dummy value that at the same time is unlikely to be used as a valid raster data value
+		double noDataValue = Double.NEGATIVE_INFINITY;
 
 		GridSampleDimension band = coverage.getSampleDimension(bandIndex); 
 		List<Category> categories = band.getCategories();
@@ -157,10 +158,12 @@ public class RasterProcessing {
 	
 	
 	/**
-	 * Gets the maximum value out of all not-NULL values in the specified band of the input GridCoverage2D object (NULL values will be ignored).
-	 * If the operation somehow does not work correctly, the return value will be Double.NEGATIVE_INFINITY
-	 * @param coverage
-	 * @param band index of the band of the raster file that is to be used (should always be 0 in the case of weight rasters)
+	 * Gets the maximum value out of all not-NULL values in the specified band 
+	 * of the input GridCoverage2D object (NULL values will be ignored).
+	 * If the operation does not work correctly, the return value 
+	 * will be Double.NEGATIVE_INFINITY.
+	 * @param coverage input raster 
+	 * @param band     index of the band to be used (should always be 0 for weight rasters)
 	 * @return maximum value
 	 * @throws Exception 
 	 */
@@ -194,9 +197,10 @@ public class RasterProcessing {
 	
 	
 	/**
-	 * Calculates the sum of all not-NULL values in the specified band of the input GridCoverage2D object(NULL values will be ignored).
-	 * @param coverage
-	 * @param band index of the band of the raster file that is to be used (should always be 0 in the case of weight rasters)
+	 * Calculates the sum of all not-NULL values in the specified band 
+	 * of the input GridCoverage2D object(NULL values will be ignored).
+	 * @param coverage input raster 
+	 * @param band     index of the band to be used (should always be 0 for weight rasters)
 	 * @return sum
 	 * @throws Exception 
 	 */
@@ -229,19 +233,18 @@ public class RasterProcessing {
 
 	
 	/**
-	 * Applies a rejection testing operation to a normalizedPlotWeight value in order to 
-	 * decide on whether to keep a sampled plot in the sample.
-	 * The normalizedPlotWeight Parameter is compared to a uniformly distributed random number.
-	 * If normalizedPlotWeight < random number, return value will be false, otherwise true.
-	 * For the uniformly distributed random number, Math.random() is used; the method Javadoc says that 
+	 * Applies a rejection testing operation to a normalized plot weight 
+	 * value in order to decide on whether to keep a sampled plot in the
+	 * sample. The normalizedPlotWeight Parameter is compared to a uniformly 
+	 * distributed random number.
+	 * If normalizedPlotWeight < random number, return value will be false, otherwise 
+	 * true. For the uniformly distributed random number, Math.random() is used; 
+	 * according to that method´s Javadoc  
 	 * "values are chosen pseudorandomly with (approximately) uniform distribution"
-	 * @param normalizedPlotWeight: must be in range 0-1
-	 * @return
+	 * @param normalizedPlotWeight: must be in the range 0-1
 	 */
 	public static boolean rejectionTesting(double normalizedPlotWeight){
 		boolean keepPlot = true;
-		// use uniformly distributed numbers
-		//Math.random() documentation: values are chosen pseudorandomly with (approximately) uniform distribution 
 		double randomNumber = Math.random();
 		if (normalizedPlotWeight < randomNumber){
 			keepPlot = false;

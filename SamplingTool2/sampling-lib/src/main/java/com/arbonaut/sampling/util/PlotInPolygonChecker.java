@@ -2,14 +2,12 @@
 package com.arbonaut.sampling.util;
 
 import com.arbonaut.sampling.design.plot.PlotGeometry;
-
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
-import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.geom.Polygonal;
+import com.vividsolutions.jts.algorithm.locate.PointOnGeometryLocator;
 import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.prep.PreparedPolygon;
+import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Location;
-import com.vividsolutions.jts.algorithm.locate.PointOnGeometryLocator; 
+import com.vividsolutions.jts.geom.Polygonal;
+import com.vividsolutions.jts.geom.prep.PreparedPolygon;
 
 
 /**

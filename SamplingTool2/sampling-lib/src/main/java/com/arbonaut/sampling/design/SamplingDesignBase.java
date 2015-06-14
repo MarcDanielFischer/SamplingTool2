@@ -1,20 +1,16 @@
 
 package com.arbonaut.sampling.design;
 
-import com.arbonaut.sampling.BadCRSException;
-import com.arbonaut.sampling.io.SampleWriter;
-import com.arbonaut.sampling.design.plot.PlotGeometry;
-import com.arbonaut.sampling.design.cluster.PlotCluster;
+import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.opengis.referencing.crs.ProjectedCRS;
 
+import com.arbonaut.sampling.BadCRSException;
+import com.arbonaut.sampling.design.cluster.PlotCluster;
+import com.arbonaut.sampling.design.plot.PlotGeometry;
+import com.arbonaut.sampling.io.SampleWriter;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Lineal;
 import com.vividsolutions.jts.geom.Polygonal;
-import com.vividsolutions.jts.operation.valid.IsValidOp; 
-import com.vividsolutions.jts.operation.valid.TopologyValidationError; 
-
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
-import org.opengis.referencing.crs.ProjectedCRS;
-import org.geotools.referencing.CRS;
 
 
 /**
@@ -28,6 +24,12 @@ public abstract class SamplingDesignBase implements SamplingDesign {
     private PlotGeometry plotGeometry;
     private PlotCluster plotClustering;    
     
+    /**
+     * Constructor.
+     * @param plotGeometry   Plot geometry factory defining the shape of each plot     
+     * @param plotClustering Plot cluster instance or null not to generate clustered  
+     *                       sample                   
+     */    
     public SamplingDesignBase(PlotGeometry plotGeometry, PlotCluster plotClustering) {
         this.plotGeometry = plotGeometry;
         this.plotClustering = plotClustering;

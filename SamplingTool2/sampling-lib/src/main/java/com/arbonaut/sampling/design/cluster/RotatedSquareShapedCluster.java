@@ -6,7 +6,7 @@ import com.vividsolutions.jts.geom.impl.CoordinateArraySequence;
 
 
 /**
- * Rotated Square-shaped plot cluster.
+ * Rotated square-shaped plot cluster.
  */
 public class RotatedSquareShapedCluster implements PlotCluster {
     
@@ -14,10 +14,9 @@ public class RotatedSquareShapedCluster implements PlotCluster {
     private int numPlots = 4;  
     
     /**
-     * RotatedSquareShapedCluster constructor.
-     * Note: As for now, Rotated Square-shaped plot clusters have a fixed size of 4 sub-Plots.
-     *
-     * @param plotDistance  Distance between sub-plots    
+     * Constructor.
+     * Note: As for now, rotated square-shaped plot clusters have a fixed size of 4 sub-plots.
+     * @param plotDistance  distance between sub-plots    
      */              
     public RotatedSquareShapedCluster(double plotDistance)
     {

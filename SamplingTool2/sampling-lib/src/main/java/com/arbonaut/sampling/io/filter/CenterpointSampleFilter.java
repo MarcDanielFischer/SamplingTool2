@@ -1,20 +1,13 @@
 
 package com.arbonaut.sampling.io.filter;
 
-import java.io.IOException;
-import com.arbonaut.sampling.SamplePlot;
-import com.arbonaut.sampling.BadCRSException;
+import org.geotools.geometry.jts.JTSFactoryFinder;
 
-import com.vividsolutions.jts.geom.Point;
+import com.arbonaut.sampling.SamplePlot;
 import com.vividsolutions.jts.geom.Envelope;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
-import org.opengis.referencing.NoSuchAuthorityCodeException;
-import org.opengis.referencing.FactoryException;
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
-import org.opengis.referencing.operation.MathTransform;
-import org.geotools.referencing.CRS;
-import org.geotools.geometry.jts.JTSFactoryFinder;
+import com.vividsolutions.jts.geom.Point;
 
 
 /**

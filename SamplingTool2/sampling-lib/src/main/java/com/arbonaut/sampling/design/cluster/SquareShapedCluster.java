@@ -14,11 +14,11 @@ public class SquareShapedCluster implements PlotCluster {
     private int numPlots;  
     
     /**
-     * SquareShapedCluster constructor.
-     *
-     * @param plotDistance  Distance between sub-plots    
-     * @param numPlots   Number of plots in the cluster. Note: any given input number 
-     * will result in output clusters that consist of a number of sub-plots that is divisible by 4.    
+     * Constructor.
+     * @param plotDistance Distance between sub-plots    
+     * @param numPlots     Number of plots in the cluster. Note: any given input number 
+     *                     will produce output clusters that consist of a number of 
+     *                     sub-plots that is divisible by 4.    
      */              
     public SquareShapedCluster(double plotDistance, int numPlots)
     {
@@ -31,7 +31,7 @@ public class SquareShapedCluster implements PlotCluster {
         Coordinate[] coords = new Coordinate[this.numPlots];
         
 		// centre is in the middle of the square
-		// first sub-plot lies in upper left corner
+		// first sub-plot lies in upper left (north-western) corner
         double offset = plotDistance * ((double)numPlots / 8);
         double x = centre.x - offset; 
 		double y =centre.y + offset;

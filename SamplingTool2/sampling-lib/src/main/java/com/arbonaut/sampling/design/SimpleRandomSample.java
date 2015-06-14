@@ -12,11 +12,8 @@ import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Polygonal;
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.CoordinateSequence;
-import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Location;
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
-import org.opengis.referencing.crs.ProjectedCRS;
-import org.geotools.geometry.jts.JTSFactoryFinder;
 
 
 /**
@@ -30,10 +27,9 @@ public class SimpleRandomSample extends SamplingDesignBase {
     
     /**
      * Constructor.
-     * 
-     * @param pgeom   Plot geometry factory defining the shape of each plot     
-     * @param cluster Plot cluster instance or null not to generate clustered  
-     *                sample                   
+     * @param plotGeometry   Plot geometry factory defining the shape of each plot     
+     * @param plotClustering Plot cluster instance or null not to generate clustered  
+     *                       sample                   
      */         
     public SimpleRandomSample(PlotGeometry plotGeometry, PlotCluster plotClustering) 
     {
@@ -44,14 +40,13 @@ public class SimpleRandomSample extends SamplingDesignBase {
     
     /**
      * Constructor.
-     * 
-     * @param pgeom   Plot geometry factory defining the shape of each plot     
-     * @param cluster Plot cluster instance or null not to generate clustered  
-     *                sample                   
-     * @param attempts Maximum number of attempts for placing the desired number 
-     *                 of plots before chickening out, relative to the sample 
-     *                 size. This is still multiplied by sampleSize to get the 
-     *                 actual limit. 
+     * @param plotGeometry   Plot geometry factory defining the shape of each plot     
+     * @param plotClustering Plot cluster instance or null not to generate clustered  
+     *                       sample                   
+     * @param maxNumAttempts Maximum number of attempts for placing the desired number 
+     *                       of plots before chickening out, relative to the sample 
+     *                       size. This is still multiplied by sampleSize to get the 
+     *                       actual limit. 
      */         
     public SimpleRandomSample(PlotGeometry plotGeometry, PlotCluster plotClustering,
                               int maxNumAttempts) 
@@ -173,6 +168,4 @@ public class SimpleRandomSample extends SamplingDesignBase {
         return true;
     }
     
-
-	
 }

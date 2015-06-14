@@ -28,7 +28,6 @@ import com.vividsolutions.jts.geom.Geometry;
 
 /**
  * Writes sample plots to a Shapefile.
- * 
  */
 public class ShpSampleWriter implements SampleWriter {
 
@@ -44,14 +43,9 @@ public class ShpSampleWriter implements SampleWriter {
     
      
     /**
-     * CsvSampleWriter constructor.
-     * 
-     * @param file    Output file
-     * @param design  Sample design under which the written plots are generated
-     * @param writeXYColumns If true, the CSV file will have 'X' and 'Y' columns
-     *                       with the plot coordinates. Otherwise 'Geom' column
-     *                       will be written with full geometry description in 
-     *                       WKT format.                                 
+     * ShpSampleWriter constructor.
+     * @param file    output file
+     * @param design  sample design under which the written plots are generated
      */             
     public ShpSampleWriter(File file, SamplingDesign design) 
     		 throws IOException
@@ -59,8 +53,9 @@ public class ShpSampleWriter implements SampleWriter {
     	this.file = file;
     	this.design = design;
     	
-    	// this.TYPE is not initialized in the constructor because it depends on the actual plot Geometry
-    	// and is therefore called by the write() method
+    	// this.TYPE is not initialized in the constructor because it depends on 
+    	// the actual plot Geometry to be written
+    	// and is therefore only initialized by the write() method
     	
     	// initialize dataStore
     	// we use DataStoreFactory with a parameter indicating we want a spatial index
@@ -74,27 +69,39 @@ public class ShpSampleWriter implements SampleWriter {
     }
 
 
+    /**
+     * Stores a plot in the class´s feature ArrayList property.
+     * The actual writing to output file operation is performed
+     * by the close() method. This allows for all plots to
+     * be written at the same time, so it is not necessary to establish
+     * writing access to the output file every time this method is called
+     * and transactions can be used without severe performance losses.
+     * @param plot
+     */
     public void write(SamplePlot plot) throws Exception 
     {
-    	// Problem: FeatureType must know the final plot Geometry type (POINT, POLYGON, MULTIPOLY...),
-    	// but when constructor is called, this is not yet known 
-    	// --> only when the plot is there, we really know what type ists Geometry is
-    	// so it really only maked sense to construct the type when we do have a plot to write
-    	// further complication: write plots 1 by 1 -> my example code writes all features at once
-    	// -> means leaving the file open and not closing it (eg no commit)
-    	// create FeatureType instead of csv header line
+    	/*
+    	 * Instead of writing a csv header line, we first
+    	 * define a FeatureType for the output Shapefile here. 
+    	 * In order to establish this class´s FeatureType property,
+    	 * the actual plot Geometry type must be known (POINT, POLYGON,
+    	 * or MULTIPOLYGON) which may not be case at the time the
+    	 * constructor is called (-> only when there is a plot to write,
+    	 * we really know what type its Geometry is).
+    	 * This is why this.FeatureType is initialized by the first call
+    	 * to this method. 
+    	 */
     	
     	// check if FeatureType has been defined already
     	if(this.TYPE == null){
     		this.TYPE = createFeatureType(plot, design);
-    		// use createSchema( SimpleFeatureType ) method to set up the shapefile
+    		// use createSchema() method to set up the shapefile
         	this.dataStore.createSchema(TYPE); // TYPE is used as a template to describe the file contents
     	}
     	
-    	// create a feature for each sample plot. Please note the following:
-    	// Creation of features (SimpleFeature objects) using SimpleFeatureBuilder
-
     	/*
+    	 *  Create a feature for each sample plot. 
+    	 *  Please note the following:
     	 *  If you have used previous versions of GeoTools you might be used 
     	 *  to creating a new FeatureCollection and using the add method 
     	 *  to accumulate features. This usage has now been deprecated and 
@@ -152,21 +159,14 @@ public class ShpSampleWriter implements SampleWriter {
     }
     
     
+    /** 
+     * Closes this SampleWriter. 
+     * This method writes all Features that have been stored in 
+     * the class´s feature ArrayList 
+     * property during the writing loop to an output Shapefile.
+     */
     public void close() throws IOException 
     {
-    	// write all Features at once when the writing loop is over
-
-    	/////////////////////////////////////////////////////////////////////////////////////////////////////////
-    	//Write the feature data to the shapefile
-    	// We check that we have read-write access by confirming our FeatureSource object implements the FeatureStore methods
-    	// Take a moment to check how closely the shapefile was able to match 
-    	//our template (the SimpleFeatureType TYPE). Compare this output to see how they are different.
-    	// The SimpleFeatureStore that we use to do this expects a 
-    	// FeatureCollection object, so we wrap our list of features in a ListFeatureCollection.
-    	// The use of transaction commit() to safely write out the features in one go.
-    	/*
-    	 * Write the features to the shapefile
-    	 */
     	Transaction transaction = new DefaultTransaction("create");
 
     	String typeName = this.dataStore.getTypeNames()[0];
@@ -183,6 +183,8 @@ public class ShpSampleWriter implements SampleWriter {
     	 */
     	System.out.println("SHAPE:"+SHAPE_TYPE);
 
+    	// Check that we have read-write access by confirming our FeatureSource 
+    	// object implements the FeatureStore methods.
     	if (featureSource instanceof SimpleFeatureStore) {
     		SimpleFeatureStore featureStore = (SimpleFeatureStore) featureSource;
     		/*
@@ -204,7 +206,5 @@ public class ShpSampleWriter implements SampleWriter {
     	} else {
     		throw new IOException(typeName + " does not support read/write access");
     	}
-    	/////////////////////////////////////////////////////////////////////////////////////////////////////////
     }	
-
 }
